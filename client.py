@@ -3,7 +3,7 @@ import socket
 UDP_PORT = 50000
 TCP_PORT = 50001
 DISCOVERY_MSG = "DISCOVER_SERVER"
-
+# 
 def udp_discovery_client():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)

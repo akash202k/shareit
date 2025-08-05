@@ -1,11 +1,11 @@
 import socket
 import os
-
+# 
 UDP_PORT = 50000
 TCP_PORT = 50001
 DISCOVERY_MSG = "DISCOVER_SERVER"
 RESPONSE_MSG = "SERVER_HERE"
-FILE_PATH = "sample.txt"  # ← Change this to any file you want to send
+FILE_PATH = "/Users/akash/Downloads/1750068149605_6kOSAfdOZYaPqFVadjhDi_output.mp4"  # ← Change this to any file you want to send
 
 def udp_discovery_server():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
