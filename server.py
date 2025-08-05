@@ -5,9 +5,8 @@ UDP_PORT = 50000
 TCP_PORT = 50001
 DISCOVERY_MSG = "DISCOVER_SERVER"
 RESPONSE_MSG = "SERVER_HERE"
-FILE_PATH = "sample.txt"
+FILE_PATH = "sample.txt"  # ← Change this to any file you want to send
 
-# --- UDP Discovery Server ---
 def udp_discovery_server():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(("", UDP_PORT))
@@ -21,7 +20,6 @@ def udp_discovery_server():
             break
     sock.close()
 
-# --- TCP File Transfer Server ---
 def tcp_file_server():
     server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_sock.bind(("", TCP_PORT))
@@ -31,8 +29,18 @@ def tcp_file_server():
     conn, addr = server_sock.accept()
     print(f"[TCP] Connection from {addr}")
 
+    filename = os.path.basename(FILE_PATH)
     file_size = os.path.getsize(FILE_PATH)
-    conn.sendall(str(file_size).encode())
+
+    # Send filename and size separated by a delimiter (e.g., "::")
+    conn.sendall(f"{filename}::{file_size}".encode())
+    
+    ack = conn.recv(1024)  # Wait for ACK from client
+    if ack.decode() != "READY":
+        print("[TCP] Client not ready. Aborting.")
+        conn.close()
+        server_sock.close()
+        return
 
     with open(FILE_PATH, "rb") as f:
         while chunk := f.read(4096):

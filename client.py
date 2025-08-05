@@ -28,10 +28,17 @@ def tcp_file_client(server_ip):
     client_sock.connect((server_ip, TCP_PORT))
     print(f"[TCP] Connected to {server_ip}:{TCP_PORT}")
 
-    file_size = int(client_sock.recv(1024).decode())
-    received = 0
+    # Receive filename and file size
+    header = client_sock.recv(1024).decode()
+    filename, file_size = header.split("::")
+    file_size = int(file_size)
 
-    with open("received_file.txt", "wb") as f:
+    print(f"[TCP] Receiving {filename} ({file_size} bytes)")
+
+    client_sock.sendall(b"READY")  # Send ACK
+
+    received = 0
+    with open(filename, "wb") as f:
         while received < file_size:
             data = client_sock.recv(4096)
             if not data:
@@ -39,7 +46,7 @@ def tcp_file_client(server_ip):
             f.write(data)
             received += len(data)
 
-    print("[TCP] File received successfully!")
+    print(f"[TCP] File {filename} received successfully!")
     client_sock.close()
 
 if __name__ == "__main__":
