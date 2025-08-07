@@ -4,6 +4,8 @@ import time
 
 def send_file(file_path, client_ip, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # Allow immediate reuse of the address after close
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(('', port))
     s.listen(1)
     print(f"[TCP] Waiting for receiver on port {port}...")
@@ -27,3 +29,6 @@ def send_file(file_path, client_ip, port):
     print(f"[TCP] Sent file '{filename}' ({filesize} bytes)")
     conn.close()
     s.close()
+
+    # Small delay to help OS free socket resources before next reuse
+    time.sleep(0.5)

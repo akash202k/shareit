@@ -1,6 +1,6 @@
 [project]
 name = "akashshare"
-version = "0.1.6"
+version = "0.1.7"
 description = "CLI tool to share files over LAN using UDP + TCP"
 authors = [
   { name="Akash", email="akashpawar202k@gmail.com" }
