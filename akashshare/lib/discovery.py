@@ -1,7 +1,7 @@
 # src/lib/discovery.py
 
 import socket
-from src.utils import UDP_PORT, DISCOVERY_MSG, RESPONSE_MSG
+from akashshare.utils import UDP_PORT, DISCOVERY_MSG, RESPONSE_MSG
 
 def udp_discovery_server():
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

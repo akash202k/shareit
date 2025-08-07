@@ -1,8 +1,8 @@
 from InquirerPy import inquirer
-from src.lib.discovery import udp_discovery_server, udp_discovery_client
-from src.lib.sender import send_file
-from src.lib.receiver import start_tcp_receiver
-from src.utils.helper import get_filename, get_dirname, get_file_names_from_dir
+from akashshare.lib.discovery import udp_discovery_server, udp_discovery_client
+from akashshare.lib.sender import send_file
+from akashshare.lib.receiver import start_tcp_receiver
+from akashshare.utils.helper import get_filename, get_dirname, get_file_names_from_dir
 import os
 
 

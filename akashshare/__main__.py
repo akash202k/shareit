@@ -1,8 +1,7 @@
-# src/main.py
 from InquirerPy import inquirer
-from src.lib import handle_send_action, handle_receive_action, handle_exit_action
+from akashshare.lib import handle_send_action, handle_receive_action, handle_exit_action
 
-if __name__ == "__main__":
+def main():  # <- Add this function
     while True:
         choice = inquirer.select(
             message="Choose an action",
@@ -15,3 +14,4 @@ if __name__ == "__main__":
             handle_receive_action()
         else:
             handle_exit_action()
+
