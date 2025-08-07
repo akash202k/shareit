@@ -1,12 +1,16 @@
 import socket
 import os
-import struct
+import time
 
 def send_file(file_path, client_ip, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('', port))
     s.listen(1)
-    print(f"[TCP] Waiting for receiver on port {port}")
+    print(f"[TCP] Waiting for receiver on port {port}...")
+
+    # Add small delay to ensure the socket is ready before accepting
+    time.sleep(1)
+
     conn, addr = s.accept()
     print(f"[TCP] Connected to {addr}")
 

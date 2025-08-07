@@ -1,3 +1,4 @@
+import time  # ADD THIS
 from InquirerPy import inquirer
 from akashshare.lib.discovery import udp_discovery_server, udp_discovery_client
 from akashshare.lib.sender import send_file
@@ -7,7 +8,6 @@ import os
 
 
 def handle_send_action():
-    # Ask: file or directory
     choice = inquirer.select(
         message="What do you want to send?",
         choices=["File", "Directory (coming soon)", "Back"],
@@ -22,10 +22,10 @@ def handle_send_action():
 
         print(f"[INFO] Waiting for receiver to discover us via UDP...")
 
-        # Start UDP discovery server, get receiver IP (it will connect to us)
         receiver_ip = udp_discovery_server()
 
         if receiver_ip:
+            time.sleep(1)  # ADD THIS: Give receiver time to connect
             send_file(file_path, receiver_ip, port=50001)
         else:
             print("[UDP] No receiver found.")
