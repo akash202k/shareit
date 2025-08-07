@@ -15,3 +15,6 @@ def main():  # <- Add this function
         else:
             handle_exit_action()
 
+
+if __name__ == "__main__":
+    main()
