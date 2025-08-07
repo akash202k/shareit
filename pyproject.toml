@@ -1,6 +1,6 @@
 [project]
 name = "akashshare"
-version = "0.1.4"
+version = "0.1.5"
 description = "CLI tool to share files over LAN using UDP + TCP"
 authors = [
   { name="Akash", email="akashpawar202k@gmail.com" }
@@ -11,6 +11,7 @@ requires-python = ">=3.8"
 
 dependencies = [
   "InquirerPy",
+  "tqdm"
 ]
 
 [project.scripts]
