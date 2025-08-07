@@ -1,5 +1,0 @@
-This is a sample file for testing P2P TCP file transfer over LAN.
-This is a sample file for testing P2P TCP file transfer over LAN.
-This is a sample file for testing P2P TCP file transfer over LAN.
-This is a sample file for testing P2P TCP file transfer over LAN.
-This is a sample file for testing P2P TCP file transfer over LAN.
