@@ -19,7 +19,7 @@ More info: [pipx installation guide](https://pypa.github.io/pipx/installation/)
 Then run directly using:
 
 ```bash
-pipx run git+https://github.com/yourusername/akashshare.git
+pipx run akashshare
 ```
 
 Great for quick file sharing on the same Wi-Fi network without installing.
@@ -47,7 +47,7 @@ pip install akashshare
 Run the tool by:
 
 ```bash
-akashshare
+python -m akashshare
 ```
 
 ---
@@ -81,14 +81,14 @@ Run the CLI and choose an action:
 On **sender** machine:
 
 ```bash
-akashshare
+python -m akashshare OR pipx run akashshare
 # Select "Send" and enter file path when prompted
 ```
 
 On **receiver** machine:
 
 ```bash
-akashshare
+python -m akashshare OR pipx run akashshare
 # Select "Receive" to wait for incoming files
 ```
 
